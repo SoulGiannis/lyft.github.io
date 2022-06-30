@@ -1,0 +1,25 @@
+<html>
+    <body>
+       
+            <label for="nameid">Name</label>
+            <input type="text" id="nameid">
+            <button type="button" onclick="getvalue();">hello</button>
+            <button type="button" id="buttonid"></button>
+        
+
+        <script>
+           //function makecapital(value){
+            //    console.log(value.toUpperCase());
+            //}
+            function getvalue(){
+                const myname = document.getElementById('nameid').value;                  
+                const btn = myname.toUpperCase();              
+                document.getElementById('buttonid').innerHTML=btn;
+                console.log(btn);
+            }
+            //let myname = 'soulgiannis'
+            
+            //getvalue('rishabh',makecapital);
+        </script>
+    </body>
+</html>

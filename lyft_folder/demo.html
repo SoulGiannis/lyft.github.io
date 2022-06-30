@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lyft</title>
+        <style>            
+            html{
+                scrollbar-width: 10vw;
+                scrollbar-color: rgb(218, 200, 200) rgb(185, 146, 146) ;
+                scroll-behavior: smooth;              
+            }                                
+            html::-webkit-scrollbar{
+                width:2vw;
+            }
+            html::-webkit-scrollbar-thumb{
+                background-color:gray;
+            }
+            html::-webkit-scrollbar-track{
+                background-color:black;
+            }        
+            .bg_color{
+                background-color: black;
+            }
+            .clearfix:after {
+                content: ".";
+                display: block;
+                clear: both;
+                visibility: hidden;
+                line-height: 0;
+                height: 0;
+            }
+            
+            .clearfix {
+                display: inline-block;
+            }
+            
+            html[xmlns] .clearfix {
+                display: block;
+            }
+            
+            * html .clearfix {
+                height: 1%;
+            }
+            
+            .column{
+                float:left;
+                padding: 20px;
+            }
+
+            <!--building-->
+           
+            .container_building{
+                background-color:black;
+                width:30em;
+                height:620vh;                               
+                display:flex;
+                align-items:left;
+                justify-content:left;
+                background-color:rgb(19, 18, 18);
+            }
+            .house{
+                width:25em;
+                height:90vh;
+                display:flex;                
+                align-items:center;
+                justify-content:center;
+                background-color:grey;
+                border:5px solid rgb(95, 91, 91);                              
+            }
+            
+            .window{
+                width:3em;
+                height:12vh;
+                display:inline-table;
+                align-items:left;
+                justify-content:left;                
+                background-color:wheat;                
+            }
+            .window_line{
+                min-width:3em;
+                height:10vh;                               
+                border:5px solid black;
+            }
+            .house_number{
+                color:rgb(83, 60, 60);                                                                                       
+            }
+            .house_box{
+                width:2em;
+                height:12vh;                 
+                margin-top:250px;              
+            }
+            
+            <!--lyft-->
+            .container_lyft{
+                width:20em;
+                height:620vh;
+                display:flex;                
+                align-items:center;
+                justify-content:center;  
+                background-color:rgba(121, 67, 67, 0.911);                           
+            }
+            .lyft{
+                width:20em;
+                height:90vh;
+                display:flex;                
+                align-items:center;
+                justify-content:right;                
+                background-color:rgb(218, 200, 200);
+                color:white;
+                margin-top:53px;
+                border:5px solid rgb(185, 146, 146);
+                position:relative;                                           
+                animation-duration:2s;
+                animation-delay:1s;                
+                animation-fill-mode: both;
+            }
+
+            /*Sixth floor (lyft will go to sixth floor from other floors)*/
+            @keyframes stSix_s {
+                from {margin-top: 53px;}
+                to   {margin-top: 53px;}
+            }
+            @keyframes stSix_fi {
+                from {margin-top: 570px;}
+                to   {margin-top: 53px;}
+            }
+            @keyframes stSix_f {
+                from {margin-top: 1087px;}
+                to   {margin-top: 53px;}
+            }
+            @keyframes stSix_th {
+                from {margin-top: 1605px;}
+                to   {margin-top: 53px;}
+            }
+            @keyframes stSix_t {
+                from {margin-top: 2123px;}
+                to   {margin-top: 53px;}
+            }
+            @keyframes stSix_o {
+                from {margin-top: 2640px;}
+                to   {margin-top: 53px;}
+            }
+            
+            /*Fifth floor (lyft will go to fifth floor from other floors)*/
+            @keyframes stFive_s { 
+                from {margin-top: 53px;}
+                to   {margin-top: 570px;}
+            }
+            @keyframes stFive_fi{
+                from {
+                margin-top: var(--m, 570px);
+                }
+                to {
+                        margin-top: 570px;
+                }
+            }
+            @keyframes stFive_f {
+                from {margin-top: 1087px;}
+                to   {margin-top: 570px;}
+            }
+            @keyframes stFive_th {
+                from {margin-top: 1605px;}
+                to   {margin-top: 570px;}
+            }
+            @keyframes stFive_t {
+                from {margin-top: 2123px;}
+                to   {margin-top: 570px;}
+            }
+            @keyframes stFive_o {
+                from {margin-top: 2640px;}
+                to   {margin-top: 570px;}
+            }
+
+            /*fourth floor (lyft will go to fourth floor from other floors)*/
+            @keyframes stFour_s {
+                from {margin-top: 53px;}
+                to   {margin-top: 1087px;}
+            }
+            @keyframes stFour_fi {
+                from {margin-top: 570px;}
+                to   {margin-top: 1087px;}
+            }
+            @keyframes stFour_f {
+                from {
+                margin-top: var(--m, 570px);
+                }
+                to {
+                        margin-top: 1087px;
+                }
+            }
+            @keyframes stFour_th {
+                from {margin-top: 1605px;}
+                to   {margin-top: 1087px;}
+            }
+            @keyframes stFour_t {
+                from {margin-top: 2123px;}
+                to   {margin-top: 1087px;}
+            }
+            @keyframes stFour_o {
+                from {margin-top: 2640px;}
+                to   {margin-top: 1087px;}
+            }
+
+           /*third floor (lyft will go to third floor from other floors)*/
+            @keyframes stThree_s {
+                from {margin-top: 53px;}
+                to   {margin-top: 1605px;}
+            }
+            @keyframes stThree_fi {
+                from {margin-top: 570px;}
+                to   {margin-top: 1605px;}
+            }
+            @keyframes stThree_f {
+                from {margin-top: 1087px;}
+                to   {margin-top: 1605px;}
+            }
+            @keyframes stThree_th {
+                from {
+                margin-top: var(--m, 570px);
+                }
+                to {
+                        margin-top: 1605px;
+                }
+            }
+            @keyframes stThree_t {
+                from {margin-top: 2123px;}
+                to   {margin-top: 1605px;}
+            }
+            @keyframes stThree_o {
+                from {margin-top: 2640px;}
+                to   {margin-top: 1605px;}
+            }
+
+            /*second floor (lyft will go to second floor from other floors)*/
+            @keyframes stTwo_s {
+                from {margin-top: 53px;}
+                to   {margin-top: 2123px;}
+            }
+            @keyframes stTwo_fi {
+                from {margin-top: 570px;}
+                to   {margin-top: 2123px;}
+            }
+            @keyframes stTwo_f {
+                from {margin-top: 1087px;}
+                to   {margin-top: 2123px;}
+            }
+            @keyframes stTwo_th {
+                from {margin-top: 1605px;}
+                to   {margin-top: 2123px;}
+            }
+            @keyframes stTwo_t {
+                from {
+                margin-top: var(--m, 570px);
+                }
+                to {
+                        margin-top:2123px;
+                }
+            }
+            @keyframes stTwo_o {
+                from {margin-top: 2640px;}
+                to   {margin-top: 2123px;}
+            }
+
+            /*first floor (lyft will go to first floor from other floors)*/
+            @keyframes stOne_s {
+                from {margin-top: 53px;}
+                to   {margin-top: 2640px;}
+            }            
+            @keyframes stOne_fi {
+                from {margin-top: 570px;}
+                to   {margin-top: 2640px;}
+            }            
+            @keyframes stOne_f {
+                from {margin-top: 1087px;}
+                to   {margin-top: 2640px;}
+            }            
+            @keyframes stOne_th {
+                from {margin-top: 1605px;}
+                to   {margin-top: 2640px;}
+            }            
+            @keyframes stOne_t {
+                from {margin-top: 2123px;}
+                to   {margin-top: 2640px;}
+            }            
+            @keyframes stOne_o {
+                from {
+                margin-top: var(--m, 570px);
+                }
+                to {
+                        margin-top: 2640px;
+                }
+            } 
+
+            .lyft_box{
+                background-color:rgb(218, 200, 200);
+                width:6em;
+                height:20vh;                
+                border:2px solid black;
+            }           
+            .box_button{
+                border-radius:60px;
+                font-size:10px;
+            }      
+            
+            /*class for scroll*/
+            
+            .auto_Scroll{
+                transform: translateY(0px);
+                transition-duration: 5s;  
+                position: relative;
+            }
+            .auto_Scroll.active{
+                transform: translateY();
+            }
+            /*button for scroll*/
+            
+            .scrollButton{
+                text-shadow: none;
+            }
+            .scrollButton.active{
+                text-shadow:3em;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="bg_color clearfix">
+            <div class="column container_building"> 
+                <p><button id="601" class="house_number">601</button></p>           
+                <div class="house scrollButton" id="sixth">              
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div> 
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div>      
+                </div>
+                <p><button id="501" class="house_number">501</button></p>
+                <div class="house auto_Scroll" id="fifth">
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div> 
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div>               
+                </div>
+                <p><button id="401" class="house_number">401</button></p>
+                <div class="house auto_Scroll" id="fourth">
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div> 
+                    </div>
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div>  
+                </div>
+                <p><button id="301" class="house_number">301</button></p>
+                <div class="house auto_Scroll" id="third">
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>
+                    </div>
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div>  
+                </div>
+                <p><button id="201" class="house_number">201</button></p>
+                <div class="house auto_Scroll" id="second">
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>
+                    </div>
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div>  
+                </div>
+                <p><button id="101" class="house_number">101</button></p>
+                <div class="house auto_Scroll" id="first">
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>                                        
+                    </div>
+                    <div class="window">
+                        <div class="window_line">                        
+                        </div>
+                        <div class="window_line">                        
+                        </div>             
+                    </div>  
+                </div>
+            </div>
+            <div class="column">
+                <div class="house_box">                  
+                    <button id="box_six" onclick="cSix(this)">▼</button>
+                </div>
+                <div class="house_box" style="margin-top:470px;">
+                    <button id="box_five" onclick="call_up(this)">▲</button>
+                    <br><br>                
+                    <button id="box_five" onclick="call_down(this)">▼</button>
+                </div>
+                <div class="house_box" style="margin-top:450px;">
+                    <button id="box_four" onclick="call_up(this)">▲</button>
+                    <br><br>                
+                    <button id="box_four" onclick="call_down(this)">▼</button>
+                </div>
+                <div class="house_box" style="margin-top:450px;">
+                    <button id="box_three" onclick="call_up(this)">▲</button>
+                    <br><br>                
+                    <button id="box_three" onclick="call_down(this)">▼</button>
+                </div>
+                <div class="house_box" style="margin-top:450px;">
+                    <button id="box_two" onclick="call_up(this)">▲</button>
+                    <br><br>                
+                    <button id="box_two" onclick="call_down(this)">▼</button>
+                </div>
+                <div class="house_box" style="margin-top:450px;"> 
+                    <button id="box_one" onclick="call_up(this)">▲</button>
+                </div>
+            </div>
+            <div class="container_lyft column ">                        
+                <div class="lyft">
+                    <div class="lyft_box">
+                        <a href="#sixth" class="active"><button onclick="cSix(this);" id="6" class="box_button scrollButton">6</button></a>
+                        <a href="#fifth"><button  onclick="cSix(this);" id="5" class="box_button scrollButton">5</button></a>
+                        <button id="fan" class="box_button">☢️</button><br>
+                        <a href="#fourth"><button  onclick="cSix(this);" id="4" class="box_button scrollButton">4</button></a>
+                        <a href="#third"><button onclick="cSix(this);" id="3" class="box_button scrollButton">3</button></a>
+                        <button onclick="cLight()" id="bulb" value="off" class="box_button">💡</button><br>
+                        <a href="#second"><button  onclick="cSix(this);" id="2" class="box_button scrollButton">2</button></a>
+                        <a href="#first"><button  onclick="cSix(this);" id="1" class="box_button scrollButton">1</button></a>
+                        <button id="alarm" class="box_button">🔔</button><br>
+                        <button id="g" class="box_button">G</button>
+                        <button id="stop" class="box_button">🛑</button>                
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <audio id="myAudio" controls>
+            <source src="file_example_WAV_1MG.wav" type="audio/wav">    
+        </audio>
+        <script>
+                    
+            document.addEventListener('keydown',keyDown);            
+            var lyft_mg = document.querySelector(".lyft");
+            
+            //function for pressing key
+            
+            function keyDown(f){/*                
+                f.preventDefault();                
+                if(f.key==6){                    
+                    //lyft_mg.style.marginTop="53px"; 
+                    lyft_mg.style.animationName="stSix_s";                 
+                } 
+                if(f.key==5){
+                    //lyft_mg.style.marginTop="570px";
+                    lyft_mg.style.animationName="stFive_fi";
+                } 
+                if(f.key==4){
+                    //lyft_mg.style.marginTop="1087px";
+                    lyft_mg.style.animationName="stFour_f";
+                } 
+                if(f.key==3){
+                    //lyft_mg.style.marginTop="1605px";
+                    lyft_mg.style.animationName="stThree_th";
+                } 
+                if(f.key==2){
+                    //lyft_mg.style.marginTop="2122px";
+                    lyft_mg.style.animationName="stTwo_t";
+                } 
+                if(f.key==1){
+                   // lyft_mg.style.marginTop="2640px";
+                    lyft_mg.style.animationName="stOne_o";
+                }  
+                if(f.key=='l'){
+                    lyft_mg.style.backgroundColor="yellow";                    
+                } */            
+            }
+            
+            //function for clicking button
+             
+            //var six = document.getElementById("s");                       
+            //var five = document.getElementById("5");
+
+            //for loop used to margin house_box of all the six floor in front of each house
+            /*
+            var box_mg = document.querySelector(".house_box");
+            var current_mg = 250;
+            for(let i=0;i<6;i++){                
+                current_mg = 160+current_mg;
+                box_mg.style.marginTop="current_mgpx";
+                console.log(current_mg);
+            } 
+            */
+
+           /* switch case is used for random spawn of lyft and active that floor
+            ie margin is given for all the floor and is turned true */             
+                      
+            var one=false,two=false,three=false,four=false,five=false,six=false;   
+            var floor = Math.floor(Math.random() * 6) + 1;             
+            switch(floor)
+            {
+                case 1:
+                    one = true;
+                    lyft_mg.style.marginTop="2640px";
+                    break;
+                case 2: 
+                    two = true;
+                    lyft_mg.style.marginTop="2123px";
+                    break;
+                case 3:
+                    three = true;
+                    lyft_mg.style.marginTop="1605px";
+                    break;
+                case 4: 
+                    four = true;
+                    lyft_mg.style.marginTop="1087px";
+                    break;
+                case 5: 
+                    five = true;
+                    lyft_mg.style.marginTop="570px";
+                    break;
+                case 6: 
+                    six = true;                                   
+                    lyft_mg.style.marginTop="53px";
+            }             
+            //main clicking buttons function 
+            function cSix(event){
+                var current_floor;
+                
+                /*floor six (if lyft is on sixth floor and button 6 is clicked)*/
+                if(six==true){
+                    if(event.id == '6'){
+                        lyft_mg.style.animationName="stSix_s";
+                        current_floor='53px';
+                        six=true,five=false,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                /*floor six (if lyft is on fifth floor and button 6 is clicked)*/
+                if(five==true){
+                    if(event.id == '6'){
+                        lyft_mg.style.animationName="stSix_fi";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='53px';
+                        six=true,five=false,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                /*floor six (if lyft is on fourth floor and button 6 is clicked)*/
+                if(four==true){
+                    if(event.id == '6'){
+                        lyft_mg.style.animationName="stSix_f";
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='53px';
+                        six=true,five=false,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                /*floor six (if lyft is on third floor and button 6 is clicked)*/
+                if(three==true){
+                    if(event.id == '6'){
+                        lyft_mg.style.animationName="stSix_th";
+                        lyft_mg.style.animationDuration="6s";
+                        current_floor='53px';
+                        six=true,five=false,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                /*floor six (if lyft is on second floor and button 6 is clicked)*/
+                if(two==true){
+                    if(event.id == '6'){
+                        lyft_mg.style.animationName="stSix_t";
+                        lyft_mg.style.animationDuration="8s";
+                        current_floor='53px';
+                        six=true,five=false,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                /*floor six (if lyft is on one floor and button 6 is clicked)*/
+                if(one==true){
+                    if(event.id == '6'){
+                        lyft_mg.style.animationName="stSix_o";
+                        lyft_mg.style.animationDuration="10s";
+                        current_floor='53px';
+                        six=true,five=false,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+
+                /*fifth floor*/
+                if(six==true){
+                    if(event.id == '5'){
+                        document.querySelector('.lyft').style.setProperty('--m', '53px'); 
+                        lyft_mg.style.animationDuration="2s";                      
+                        current_floor='570px';
+                        six=false,five=true,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                if(five==true){
+                    if(event.id == '5'){
+                        lyft_mg.style.animationName="stFive_fi";                                                
+                        current_floor='570px';
+                        six=false,five=true,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                if(four==true){
+                    if(event.id == '5'){
+                        lyft_mg.style.animationName="stFive_f";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='570px';
+                        six=false,five=true,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                if(three==true){
+                    if(event.id == '5'){
+                        lyft_mg.style.animationName="stFive_th";
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='570px';
+                        six=false,five=true,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                if(two==true){
+                    if(event.id == '5'){
+                        lyft_mg.style.animationName="stFive_t";
+                        lyft_mg.style.animationDuration="6s";
+                        current_floor='570px';
+                        six=false,five=true,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+                if(one==true){
+                    if(event.id == '5'){
+                        lyft_mg.style.animationName="stFive_o";
+                        lyft_mg.style.animationDuration="8s";
+                        current_floor='570px';
+                        six=false,five=true,four=false,three=false,two=false,one=false;                    
+                    }
+                }
+
+                /*fourth floor*/              
+                if(six==true){
+                    if(event.id == '4'){
+                        lyft_mg.style.animationName="stFour_s";  
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='1087px'         
+                        six=false,five=false,four=true,three=false,two=false,one=false;                    
+                    }
+                }
+                if(five==true){
+                    if(event.id == '4'){
+                        lyft_mg.style.animationName="stFour_fi";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='1087px'
+                        six=false,five=false,four=true,three=false,two=false,one=false;                    
+                    }
+                }
+                if(four==true){
+                    if(event.id == '4'){                        
+                        document.querySelector('.lyft').style.setProperty('--m', current_floor='1087px');                                           
+                        current_floor='1087px';
+                        six=false,five=false,four=true,three=false,two=false,one=false;                    
+                    }
+                }
+                if(three==true){
+                    if(event.id == '4'){
+                        lyft_mg.style.animationName="stFour_th";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='1087px'
+                        six=false,five=false,four=true,three=false,two=false,one=false;                    
+                    }
+                }
+                if(two==true){
+                    if(event.id == '4'){
+                        lyft_mg.style.animationName="stFour_t";
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='1087px'
+                        six=false,five=false,four=true,three=false,two=false,one=false;                    
+                    }
+                }
+                if(one==true){
+                    if(event.id == '4'){
+                        lyft_mg.style.animationName="stFour_o";
+                        lyft_mg.style.animationDuration="6s";
+                        current_floor='1087px'
+                        six=false,five=false,four=true,three=false,two=false,one=false;                    
+                    }
+                }
+
+                /*third floor*/
+               if(six==true){
+                    if(event.id == '3'){
+                        lyft_mg.style.animationName="stThree_s";
+                        lyft_mg.style.animationDuration="6s";
+                        current_floor='1605px'
+                        six=false,five=false,four=false,three=true,two=false,one=false;                    
+                    }
+                }
+               if(five==true){
+                    if(event.id == '3'){
+                        lyft_mg.style.animationName="stThree_fi";
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='1605px'
+                        six=false,five=false,four=false,three=true,two=false,one=false;                    
+                    }
+                }
+               if(four==true){
+                    if(event.id == '3'){
+                        lyft_mg.style.animationName="stThree_f";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='1605px'
+                        six=false,five=false,four=false,three=true,two=false,one=false;                    
+                    }
+                }
+               if(three==true){
+                    if(event.id == '3'){
+                        document.querySelector('.lyft').style.setProperty('--m', 'current_floor'); 
+                        current_floor='1605px'                       
+                        six=false,five=false,four=false,three=true,two=false,one=false;                    
+                    }
+                }
+               if(two==true){
+                    if(event.id == '3'){
+                        lyft_mg.style.animationName="stThree_t";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='1605px'
+                        six=false,five=false,four=false,three=true,two=false,one=false;                    
+                    }
+                }
+               if(one==true){
+                    if(event.id == '3'){
+                        lyft_mg.style.animationName="stThree_o";
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='1605px'
+                        six=false,five=false,four=false,three=true,two=false,one=false;                    
+                    }
+                }
+
+                /*second floor*/
+                if(six==true){
+                    if(event.id == '2'){
+                        lyft_mg.style.animationName="stTwo_s";
+                        lyft_mg.style.animationDuration="8s";
+                        current_floor='2123px'
+                        six=false,five=false,four=false,three=false,two=true,one=false;                    
+                    }
+                }
+                if(five==true){
+                    if(event.id == '2'){
+                        lyft_mg.style.animationName="stTwo_fi";
+                        lyft_mg.style.animationDuration="6s";
+                        current_floor='2123px'
+                        six=false,five=false,four=false,three=false,two=true,one=false;                    
+                    }
+                }
+                if(four==true){
+                    if(event.id == '2'){
+                        lyft_mg.style.animationName="stTwo_f";
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='2123px'
+                        six=false,five=false,four=false,three=false,two=true,one=false;                    
+                    }
+                }
+                if(three==true){
+                    if(event.id == '2'){
+                        lyft_mg.style.animationName="stTwo_th";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='2123px'
+                        six=false,five=false,four=false,three=false,two=true,one=false;                    
+                    }
+                }
+                
+                if(two==true){
+                    if(event.id == '2'){
+                        document.querySelector('.lyft').style.setProperty('--m', 'current_floor');                 
+                        current_floor='2123px'
+                        six=false,five=false,four=false,three=false,two=true,one=false;                    
+                    }
+                }
+                if(one==true){
+                    if(event.id == '2'){
+                        lyft_mg.style.animationName="stTwo_o";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='2123px'
+                        six=false,five=false,four=false,three=false,two=true,one=false;                    
+                    }
+                }
+
+                /*first floor*/
+                if(six==true){
+                    if(event.id == '1'){
+                        lyft_mg.style.animationName="stOne_s";
+                        lyft_mg.style.animationDuration="10s";
+                        current_floor='2640px'
+                        six=false,five=false,four=false,three=false,two=false,one=true;                    
+                    }
+                }
+                if(five==true){
+                    if(event.id == '1'){
+                        lyft_mg.style.animationName="stOne_fi";
+                        lyft_mg.style.animationDuration="8s";
+                        current_floor='2640px'
+                        six=false,five=false,four=false,three=false,two=false,one=true;                    
+                    }
+                }
+                if(four==true){
+                    if(event.id == '1'){
+                        lyft_mg.style.animationName="stOne_f";
+                        lyft_mg.style.animationDuration="6s";
+                        current_floor='2640px'
+                        six=false,five=false,four=false,three=false,two=false,one=true;                    
+                    }
+                }
+                if(three==true){
+                    if(event.id == '1'){
+                        
+                        
+                        lyft_mg.style.animationDuration="4s";
+                        current_floor='2640px'
+                        six=false,five=false,four=false,three=false,two=false,one=true;                    
+                    }
+                }
+                if(two==true){
+                    if(event.id == '1'){
+                        lyft_mg.style.animationName="stOne_t";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='2640px'
+                        six=false,five=false,four=false,three=false,two=false,one=true;                    
+                    }
+                }
+                if(one==true){
+                    if(event.id == '1'){
+                        document.querySelector('.lyft').style.setProperty('--m', 'current_floor');                        
+                        current_floor='2640px'
+                        six=false,five=false,four=false,three=false,two=false,one=true;                    
+                    }
+                }
+
+                //calling lift
+                if(current_floor!="53px"){
+                    if(event.id=="box_six"){
+                        lyft_mg.style.animationName="stSix_t";
+                        lyft_mg.style.animationDuration="2s";
+                        current_floor='53px'
+                        six=true,five=false,four=false,three=false,two=false,one=false;
+                    }
+                }
+
+                //background image
+                if(six==true){
+                    lyft_mg.style.backgroundImage="url('six.png')";
+                    lyft_mg.style.backgroundRepeat="no-repeat";
+                    lyft_mg.style.backgroundPosition="center";
+                    lyft_mg.style.backgroundSize="cover";
+                }
+                if(five==true){
+                    lyft_mg.style.backgroundImage="url('five.png')";
+                    lyft_mg.style.backgroundRepeat="no-repeat";
+                    lyft_mg.style.backgroundPosition="center";
+                    lyft_mg.style.backgroundSize="cover";
+                }
+                if(four==true){
+                    lyft_mg.style.backgroundImage="url('four.png')";
+                    lyft_mg.style.backgroundRepeat="no-repeat";
+                    lyft_mg.style.backgroundPosition="center";
+                    lyft_mg.style.backgroundSize="cover";
+                }
+                if(three==true){
+                    lyft_mg.style.backgroundImage="url('three.png')";
+                    lyft_mg.style.backgroundRepeat="no-repeat";
+                    lyft_mg.style.backgroundPosition="center";
+                    lyft_mg.style.backgroundSize="cover";
+                }
+                if(two==true){
+                    lyft_mg.style.backgroundImage="url('two.png')";
+                    lyft_mg.style.backgroundRepeat="no-repeat";
+                    lyft_mg.style.backgroundPosition="center";
+                    lyft_mg.style.backgroundSize="cover";
+                }
+                if(one==true){
+                    lyft_mg.style.backgroundImage="url('one.png')";
+                    lyft_mg.style.backgroundRepeat="no-repeat";
+                    lyft_mg.style.backgroundPosition="center";
+                    lyft_mg.style.backgroundSize="cover";
+                }
+
+                
+            }
+           
+            //audio function 
+            document.getElementById("6").addEventListener("click",function(){setTimeout(mypause,5000)}); 
+            document.getElementById("6").addEventListener("click",myaudio);    
+            document.getElementById("5").addEventListener("click",function(){setTimeout(mypause,5000)}); 
+            document.getElementById("5").addEventListener("click",myaudio);    
+            document.getElementById("4").addEventListener("click",function(){setTimeout(mypause,5000)}); 
+            document.getElementById("4").addEventListener("click",myaudio);    
+            document.getElementById("3").addEventListener("click",function(){setTimeout(mypause,5000)}); 
+            document.getElementById("3").addEventListener("click",myaudio);    
+            document.getElementById("2").addEventListener("click",function(){setTimeout(mypause,5000)}); 
+            document.getElementById("2").addEventListener("click",myaudio);    
+            document.getElementById("1").addEventListener("click",function(){setTimeout(mypause,5000)}); 
+            document.getElementById("1").addEventListener("click",myaudio);    
+            function myaudio(){
+                document.getElementById("myAudio").play();
+            }
+            function mypause(){
+                document.getElementById("myAudio").pause();
+            }
+
+            //FUNCTION FOR LIGHT 
+            var light=0;
+            function cLight(){   
+                           
+                if(light==0){
+                    light=1;
+                    lyft_mg.style.backgroundColor="yellow";                                        
+                }
+                else if(light==1){
+                    light=0;
+                    lyft_mg.style.backgroundColor="rgb(218, 200, 200)";                    
+                }                
+            }          
+            
+        </script>
+    </body>
+
+</html>
